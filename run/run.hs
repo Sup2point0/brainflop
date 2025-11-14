@@ -1,5 +1,3 @@
-module Main where
-
 import Data.List
 import Data.Map qualified as Map
 
@@ -11,7 +9,7 @@ main = do
     putStrLn "\n[Enter your Brainf*ck program]:"
     prog <- getLine
     putStrLn ""
-    
+
     (_, regs) <- (exec (parse prog))
     showRegisters regs
   where
