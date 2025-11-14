@@ -1,8 +1,8 @@
 module Brainflop.Executor where
 
 import Data.Char qualified as Char
-import Data.Map qualified as Map
-import Data.Map (Map, (!))
+import Data.IntMap.Strict qualified as IntMap
+import Data.IntMap.Strict (IntMap, (!))
 import Control.Monad
 
 import Brainflop.Instr qualified as Instr
@@ -12,12 +12,12 @@ import Debug.Trace
 
 
 type Pointer = Int
-type Registers = Map Int Int
+type Registers = IntMap Int
 
 
 exec :: [Instr] -> IO (Pointer, Registers)
 exec prog
-    = process prog 0 Map.empty
+    = process prog 0 IntMap.empty
   where
     process :: [Instr] -> Pointer -> Registers -> IO (Pointer, Registers)
     process [] ptr regs = return (ptr, regs)
@@ -31,8 +31,8 @@ exec prog
         = case instr of
             Instr.RIGHT -> return (ptr + 1, regs)
             Instr.LEFT  -> return (ptr - 1, regs)
-            Instr.PLUS  -> return (ptr    , Map.insertWith (+) ptr 1 regs)
-            Instr.MINUS -> return (ptr    , Map.insertWith (+) ptr (-1) regs)
+            Instr.PLUS  -> return (ptr    , IntMap.insertWith (+) ptr 1 regs)
+            Instr.MINUS -> return (ptr    , IntMap.insertWith (+) ptr (-1) regs)
             
             Instr.PRINT -> do
               putStr $ [Char.chr (regs ! ptr)]

@@ -9,10 +9,11 @@ build-type:    Simple
 library
     default-language: GHC2021
     hs-source-dirs:   brainflop
-    exposed-modules:  Brainflop
+    exposed-modules:
+        Brainflop,
+        Brainflop.Instr
     other-modules:
         Engine.Parser,
-        Brainflop.Instr,
         Brainflop.Parser,
         Brainflop.Executor
     build-depends:
@@ -33,11 +34,12 @@ test-suite brainflop-test
     type:             exitcode-stdio-1.0
     hs-source-dirs:   tests
     main-is:          test.hs
-    other-modules:    Syntax
+    other-modules:    Syntax, Utils
     build-depends:
         base ^>=4.18.3.0,
         brainflop,
         tasty,
         tasty-hunit,
         deepseq,
-        containers
+        containers,
+        ansi-terminal

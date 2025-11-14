@@ -17,10 +17,11 @@ _INSTR_CHARS_ = fromList
 
 
 data Instr
-  = RIGHT | LEFT
-  | PLUS  | MINUS
-  | PRINT | READ
-  | LOOP [Instr]
+    = RIGHT | LEFT
+    | PLUS  | MINUS
+    | PRINT | READ
+    | LOOP [Instr]
+  deriving Eq
 
 instance Show Instr where
   show RIGHT = " > "

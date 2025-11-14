@@ -1,5 +1,5 @@
 import Data.List
-import Data.Map qualified as Map
+import Data.IntMap.Strict qualified as IntMap
 
 import Brainflop
 
@@ -17,6 +17,6 @@ main = do
     showRegisters regs = do
       putStr "\n[ "
       putStr (
-          intercalate ", " $ map (show . snd) (Map.toList regs)
+          intercalate ", " $ map (show . snd) (IntMap.toList regs)
         )
       putStr " ]"
