@@ -2,28 +2,34 @@ cabal-version: 3.0
 name:          brainflop
 version:       0.1.0.0
 license:       MIT
-license-file:  LICENSE
+license-file:  LICENCE
 author:        Sup#2.0
-maintainer:    sup2point0@gmail.com
 build-type:    Simple
 
 library
-    exposed-modules:  Brainflop
-    build-depends:    base ^>=4.18.3.0
+    default-language: GHC2021
     hs-source-dirs:   brainflop
-    default-language: GHC2024
+    exposed-modules:  Brainflop
+    other-modules:
+        Engine.Parser,
+        Brainflop.Instr,
+        Brainflop.Parser,
+        Brainflop.Executor
+    build-depends:
+      base ^>=4.18.3.0,
+      containers
 
 executable brainflop
+    default-language: GHC2021
+    hs-source-dirs:   run
     main-is:          run.hs
     build-depends:
+        brainflop,
         base ^>=4.18.3.0,
-        brainflop
-
-    hs-source-dirs:   run
-    default-language: GHC2024
+        containers
 
 test-suite brainflop-test
-    default-language: GHC2024
+    default-language: GHC2021
     type:             exitcode-stdio-1.0
     hs-source-dirs:   tests
     main-is:          test.hs
