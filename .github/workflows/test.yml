@@ -9,6 +9,7 @@ on:
   push:
     paths:
       - 'test.yml'
+      - 'tests/**'
 
 jobs:
   test:
