@@ -1,0 +1,32 @@
+cabal-version: 3.0
+name:          brainflop
+version:       0.1.0.0
+license:       MIT
+license-file:  LICENSE
+author:        Sup#2.0
+maintainer:    sup2point0@gmail.com
+build-type:    Simple
+
+library
+    exposed-modules:  Brainflop
+    build-depends:    base ^>=4.18.3.0
+    hs-source-dirs:   brainflop
+    default-language: GHC2024
+
+executable brainflop
+    main-is:          run.hs
+    build-depends:
+        base ^>=4.18.3.0,
+        brainflop
+
+    hs-source-dirs:   run
+    default-language: GHC2024
+
+test-suite brainflop-test
+    default-language: GHC2024
+    type:             exitcode-stdio-1.0
+    hs-source-dirs:   tests
+    main-is:          test.hs
+    build-depends:
+        base ^>=4.18.3.0,
+        brainflop
